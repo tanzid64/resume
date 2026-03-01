@@ -1,199 +1,398 @@
 /* ============================================================
-   Resume – LaTeX-matching design
-   Font: EB Garamond (matches Computer Modern feel)
+   Resume – Modern ATS-friendly design
+   Web: clean card layout with accent colour
+   Print: stripped plain black-&-white for ATS parsers
    ============================================================ */
 
-:root {
-  --page-width: 760px;
-  --margin-x: 52px;
-  --margin-y: 36px;
-  --text: #111;
-  --muted: #444;
-  --rule: #aaa;
-  --font-body: 11.5pt;
-  --font-small: 10.5pt;
-}
-
+/* ── Reset & Variables ── */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #1d4ed8; /* blue-700 */
+  --accent-bg: #eff6ff; /* blue-50  */
+  --text: #111827;
+  --sub: #374151;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f3f4f6;
+  --white: #ffffff;
+  --radius: 6px;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 body {
-  margin: 0;
-  background: #e8e8e8;
-  font-family: "EB Garamond", "Garamond", "Georgia", "Times New Roman", serif;
-  font-size: var(--font-body);
+  font-family: var(--font);
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.4;
-  -webkit-print-color-adjust: exact;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── Page (white card) ── */
-.page {
-  max-width: var(--page-width);
-  margin: 32px auto;
-  background: #fff;
-  padding: var(--margin-y) var(--margin-x);
-  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.18);
+/* ── Top bar (PDF button) ── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 24px;
+  background: rgba(243, 244, 246, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 
-/* ── PDF button ── */
 .pdf-btn {
-  position: fixed;
-  top: 18px;
-  right: 22px;
-  z-index: 999;
-  background: #111;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--accent);
   color: #fff;
   border: none;
-  padding: 8px 18px;
+  padding: 8px 20px;
   font-size: 13px;
-  border-radius: 4px;
+  font-weight: 600;
+  border-radius: var(--radius);
   cursor: pointer;
-  font-family: system-ui, sans-serif;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  transition: background 0.15s;
+  font-family: var(--font);
+  transition:
+    background 0.15s,
+    transform 0.1s;
+  box-shadow: 0 1px 4px rgba(29, 78, 216, 0.35);
 }
 .pdf-btn:hover {
-  background: #333;
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+.pdf-btn:active {
+  transform: translateY(0);
 }
 
-/* ── Header – centred like LaTeX \begin{center} ── */
+/* ── Outer wrapper ── */
+.resume-wrapper {
+  max-width: 860px;
+  margin: 28px auto 48px;
+  padding: 0 16px;
+}
+
+/* ── Resume card ── */
+.resume {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+  overflow: hidden;
+}
+
+/* ══════════════════════════════
+   HEADER
+══════════════════════════════ */
 .resume-header {
-  text-align: center;
-  margin-bottom: 10px;
+  background: var(--accent);
+  color: #fff;
+  padding: 32px 40px 28px;
 }
-.resume-header h1 {
-  margin: 0 0 4px;
-  font-size: 22pt;
+
+.header-name-block h1 {
+  font-size: 28px;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
 }
-.subtitle {
-  margin: 0 0 6px;
-  font-size: var(--font-body);
+
+.header-role {
+  font-size: 14px;
   font-weight: 400;
+  opacity: 0.85;
+  margin-top: 5px;
+  letter-spacing: 0.2px;
 }
-.contact-links {
-  margin: 2px 0;
-  font-size: var(--font-small);
+
+.header-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 16px;
+  font-size: 13px;
+  opacity: 0.9;
 }
-.contact-links a {
-  color: var(--text);
+
+.header-contact a,
+.header-contact span {
+  color: #fff;
   text-decoration: none;
 }
-.contact-links a:hover {
+.header-contact a:hover {
   text-decoration: underline;
 }
-.sep {
-  color: var(--muted);
+
+/* ══════════════════════════════
+   SECTION BODY
+══════════════════════════════ */
+.resume-section {
+  padding: 22px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.resume-section:last-child {
+  border-bottom: none;
 }
 
-/* ── Horizontal rule under header ── */
-.header-rule {
-  border: none;
-  border-top: 0.5pt solid var(--rule);
-  margin: 10px 0 12px;
-}
-
-/* ── Section headings – \section*{\scshape ...} ── */
-section {
-  margin-top: 12px;
-}
-section:first-of-type {
-  margin-top: 0;
-}
-
-.section-title {
-  font-variant: small-caps;
-  font-size: 13pt;
+.section-heading {
+  font-size: 11px;
   font-weight: 700;
-  margin: 0 0 5px;
-  padding-bottom: 2px;
-  border-bottom: 0.5pt solid var(--rule);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent-bg);
 }
 
-/* ── Body text ── */
-.body-text {
-  margin: 4px 0 0;
-  font-size: var(--font-body);
+.summary-text {
+  color: var(--sub);
+  font-size: 13.5px;
+  line-height: 1.65;
 }
 
-/* ── Skills table – mirrors tabularx {l X} ── */
-.skills-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--font-body);
-  margin-top: 4px;
+/* ══════════════════════════════
+   SKILLS
+══════════════════════════════ */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.skills-table tr td {
-  padding: 1.5px 0;
+
+.skill-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
-.skill-label {
-  white-space: nowrap;
-  padding-right: 12px;
+
+.skill-cat {
   font-weight: 600;
-  width: 90px;
-  vertical-align: top;
+  font-size: 12.5px;
+  color: var(--sub);
+  min-width: 82px;
+  padding-top: 3px;
+  flex-shrink: 0;
 }
 
-/* ── Entry (experience / project / education) ── */
-.entry {
-  margin-top: 10px;
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
-.entry + .entry {
-  margin-top: 14px;
+
+.tag {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+}
+
+/* ══════════════════════════════
+   EXPERIENCE / PROJECTS / EDU
+══════════════════════════════ */
+.entry {
+  padding-top: 14px;
+}
+.entry:first-child {
+  padding-top: 0;
+}
+.resume-section .entry + .entry {
+  border-top: 1px dashed var(--border);
+  padding-top: 14px;
+  margin-top: 8px;
 }
 
 .entry-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
 }
+
 .entry-title {
+  font-size: 14px;
   font-weight: 700;
-  font-size: var(--font-body);
+  color: var(--text);
 }
+
+.entry-company {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.entry-badge {
+  font-size: 11px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
 .entry-date {
-  font-size: var(--font-small);
+  font-size: 12.5px;
+  font-weight: 500;
   color: var(--muted);
   white-space: nowrap;
-  padding-left: 8px;
-}
-.tech-stack {
-  font-style: italic;
-  color: var(--muted);
-}
-.entry-org {
-  font-size: var(--font-small);
-  color: var(--muted);
-  margin: 2px 0 4px;
+  flex-shrink: 0;
 }
 
-/* ── Bullet lists ── */
+.project-stack {
+  font-style: italic;
+  font-size: 12px;
+}
+
 ul {
-  margin: 4px 0 0 18px;
+  margin: 8px 0 0 18px;
   padding: 0;
+  color: var(--sub);
 }
 li {
-  margin-bottom: 3px;
-  font-size: var(--font-body);
+  font-size: 13.5px;
+  margin-bottom: 4px;
+  line-height: 1.55;
+}
+li:last-child {
+  margin-bottom: 0;
 }
 
-/* ── Print styles ── */
+/* ══════════════════════════════
+   PRINT / PDF
+   Strips all colour — clean ATS output
+══════════════════════════════ */
 @media print {
+  @page {
+    margin: 0.6in 0.7in;
+    size: A4;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   body {
     background: white;
+    font-size: 10.5pt;
+    color: #000;
+    font-family: "Helvetica Neue", Arial, sans-serif;
   }
-  .page {
+
+  .no-print,
+  .topbar {
+    display: none !important;
+  }
+
+  .resume-wrapper {
     margin: 0;
-    box-shadow: none;
-    padding: 0.55in 0.7in;
+    padding: 0;
     max-width: 100%;
   }
-  .pdf-btn {
-    display: none;
+
+  .resume {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Header becomes plain black bar */
+  .resume-header {
+    background: #000 !important;
+    color: #fff !important;
+    padding: 18pt 0 14pt;
+    text-align: center;
+  }
+  .resume-header * {
+    color: #fff !important;
+  }
+  .header-name-block h1 {
+    font-size: 20pt;
+  }
+  .header-role {
+    font-size: 10pt;
+    opacity: 1;
+  }
+  .header-contact {
+    justify-content: center;
+    font-size: 9pt;
+  }
+
+  .resume-section {
+    padding: 10pt 0;
+    border-bottom: 0.5pt solid #ccc;
+  }
+
+  .section-heading {
+    font-size: 8.5pt;
+    border-bottom: 1pt solid #000;
+    color: #000;
+    margin-bottom: 6pt;
+    padding-bottom: 2pt;
+  }
+
+  /* Tags → plain comma-separated text */
+  .skill-tags {
+    gap: 0;
+  }
+  .tag {
+    background: none !important;
+    border: none !important;
+    color: #000 !important;
+    padding: 0;
+    border-radius: 0;
+    font-size: 10pt;
+  }
+  .tag::after {
+    content: ",\00a0";
+  }
+  .tag:last-child::after {
+    content: "";
+  }
+
+  .entry-badge {
+    background: none !important;
+    border: none !important;
+    color: #000 !important;
+    font-size: 9pt;
+  }
+
+  .entry-title {
+    font-size: 10.5pt;
+    color: #000 !important;
+  }
+  .entry-company {
+    color: #333 !important;
+  }
+  .entry-date {
+    color: #333 !important;
+    font-size: 9.5pt;
+  }
+  .summary-text {
+    color: #000 !important;
+    font-size: 10pt;
+  }
+  ul {
+    color: #000 !important;
+  }
+  li {
+    font-size: 10pt;
+    margin-bottom: 2pt;
   }
 }

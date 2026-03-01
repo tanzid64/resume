@@ -4,186 +4,331 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Md. Tanzid Haque — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- PDF button – hidden when printing -->
-    <button class="pdf-btn" onclick="window.print()">
-      &#128438;&nbsp;Download PDF
-    </button>
+    <!-- ── PDF / Print button (hidden on print) ── -->
+    <div class="topbar no-print">
+      <button class="pdf-btn" onclick="window.print()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 6 2 18 2 18 9" />
+          <path
+            d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+          />
+          <rect x="6" y="14" width="12" height="8" />
+        </svg>
+        Print / Save PDF
+      </button>
+    </div>
 
-    <main class="page">
-      <!-- HEADER -->
-      <header class="resume-header">
-        <h1>Md. Tanzid Haque</h1>
-        <p class="subtitle">Software Developer</p>
-        <p class="contact-links">
-          <a href="https://tanzid.dev">tanzid.dev</a><span class="sep">&nbsp;&vert;&nbsp;</span><a href="https://github.com/tanzid64">github.com/tanzid64</a><span class="sep">&nbsp;&vert;&nbsp;</span><a href="https://linkedin.com/in/tanzid64">linkedin.com/in/tanzid64</a>
-        </p>
-        <p class="contact-links">
-          Email:&nbsp;<a href="mailto:tanzid3@gmail.com">tanzid3@gmail.com</a><span class="sep">&nbsp;&vert;&nbsp;</span>Phone:&nbsp;+880 17089-15045
-        </p>
-      </header>
-
-      <hr class="header-rule" />
-
-      <section>
-        <h2 class="section-title">Professional Summary</h2>
-        <p class="body-text">
-          Full Stack Software Developer with over 2+ years of professional
-          experience delivering SaaS, ERP, and e-commerce platforms using
-          Laravel, React, and Next.js. Proven expertise in database and API
-          optimization, secure payment integrations (Stripe, SSLCOMMERZ,
-          Square), real-time systems, and VPS-based CI/CD deployment, with a
-          strong focus on building scalable, production-ready applications.
-        </p>
-      </section>
-
-      <section>
-        <h2 class="section-title">Technical Skills</h2>
-        <table class="skills-table">
-          <tbody>
-            <tr><td class="skill-label">Languages:</td><td>PHP, JavaScript, TypeScript, Python</td></tr>
-            <tr><td class="skill-label">Frameworks:</td><td>Laravel, React, Next.js, TanStack Start, Django</td></tr>
-            <tr><td class="skill-label">Frontend:</td><td>Inertia.js, Tailwind CSS, Shadcn UI, Bootstrap</td></tr>
-            <tr><td class="skill-label">Databases:</td><td>MySQL, MongoDB, Redis</td></tr>
-            <tr><td class="skill-label">Tools:</td><td>Git, VPS, CI/CD (GitHub Actions), Postman</td></tr>
-            <tr><td class="skill-label">Libraries:</td><td>TanStack Query, TanStack Table, TanStack Form, React Hook Form</td></tr>
-            <tr><td class="skill-label">Familiar:</td><td>Docker, IoT</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section>
-        <h2 class="section-title">Experience</h2>
-
-        <div class="entry">
-          <div class="entry-header">
-            <span class="entry-title">Laravel Developer</span>
-            <span class="entry-date">Sep 2025 &ndash; Present</span>
+    <div class="resume-wrapper">
+      <main class="resume">
+        <!-- ══════════ HEADER ══════════ -->
+        <header class="resume-header">
+          <div class="header-name-block">
+            <h1>Md. Tanzid Haque</h1>
+            <p class="header-role">Full Stack Software Developer</p>
           </div>
-          <div class="entry-org">Kiwii IT, Dhaka</div>
-          <ul>
-            <li>
-              Built role-based permission and token-based authentication systems
-              (Sanctum, JWT).
-            </li>
-            <li>
-              Optimized database queries from 3s to under 500ms without caching.
-            </li>
-            <li>Integrated secure payment gateways (SSLCOMMERZ, Stripe).</li>
-            <li>
-              Implemented real-time notifications (Reverb, Pusher, SMS, Email).
-            </li>
-            <li>
-              Deployed queue management using Laravel Horizon and handled
-              PDF/Excel exports.
-            </li>
-            <li>Implemented presigned video uploads with Cloudflare R2.</li>
-            <li>Managed VPS, CI/CD pipelines, and production deployments.</li>
-          </ul>
-        </div>
+          <nav class="header-contact">
+            <a href="https://tanzid.dev">🌐 tanzid.dev</a>
+            <a href="https://github.com/tanzid64">GitHub</a>
+            <a href="https://linkedin.com/in/tanzid64">LinkedIn</a>
+            <a href="mailto:tanzid3@gmail.com">tanzid3@gmail.com</a>
+            <span>+880 17089-15045</span>
+          </nav>
+        </header>
 
-        <div class="entry">
-          <div class="entry-header">
-            <span class="entry-title">Software Developer (Part-time)</span>
-            <span class="entry-date">Jul 2024 &ndash; Present</span>
+        <!-- ══════════ SUMMARY ══════════ -->
+        <section class="resume-section">
+          <h2 class="section-heading">Professional Summary</h2>
+          <p class="summary-text">
+            Full Stack Software Developer with 2+ years of professional
+            experience delivering SaaS, ERP, and e-commerce platforms using
+            Laravel, React, and Next.js. Proven expertise in database and API
+            optimization, secure payment integrations (Stripe, SSLCOMMERZ,
+            Square), real-time systems, and VPS-based CI/CD deployment, with a
+            strong focus on building scalable, production-ready applications.
+          </p>
+        </section>
+
+        <!-- ══════════ SKILLS ══════════ -->
+        <section class="resume-section">
+          <h2 class="section-heading">Technical Skills</h2>
+          <div class="skills-list">
+            <div class="skill-row">
+              <span class="skill-cat">Languages</span>
+              <div class="skill-tags">
+                <span class="tag">PHP</span><span class="tag">JavaScript</span
+                ><span class="tag">TypeScript</span
+                ><span class="tag">Python</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-cat">Frameworks</span>
+              <div class="skill-tags">
+                <span class="tag">Laravel</span><span class="tag">React</span
+                ><span class="tag">Next.js</span
+                ><span class="tag">TanStack Start</span
+                ><span class="tag">Django</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-cat">Frontend</span>
+              <div class="skill-tags">
+                <span class="tag">Inertia.js</span
+                ><span class="tag">Tailwind CSS</span
+                ><span class="tag">Shadcn UI</span
+                ><span class="tag">Bootstrap</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-cat">Databases</span>
+              <div class="skill-tags">
+                <span class="tag">MySQL</span><span class="tag">MongoDB</span
+                ><span class="tag">Redis</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-cat">Tools</span>
+              <div class="skill-tags">
+                <span class="tag">Git</span><span class="tag">VPS</span
+                ><span class="tag">GitHub Actions</span
+                ><span class="tag">Postman</span><span class="tag">Docker</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-cat">Libraries</span>
+              <div class="skill-tags">
+                <span class="tag">TanStack Query</span
+                ><span class="tag">TanStack Table</span
+                ><span class="tag">TanStack Form</span
+                ><span class="tag">React Hook Form</span>
+              </div>
+            </div>
           </div>
-          <div class="entry-org">Digiwinners, Dhaka</div>
-          <ul>
-            <li>
-              Developed secure APIs and admin panels for e-commerce platforms.
-            </li>
-            <li>Optimized applications using Redis caching.</li>
-            <li>Payment System Integration: SSLCommerz, Stripe, Square.</li>
-            <li>Handled VPS setup and automated deployment pipelines.</li>
-          </ul>
-        </div>
+        </section>
 
-        <div class="entry">
-          <div class="entry-header">
-            <span class="entry-title">Junior Software Developer</span>
-            <span class="entry-date">Jan 2025 &ndash; Aug 2025</span>
+        <!-- ══════════ EXPERIENCE ══════════ -->
+        <section class="resume-section">
+          <h2 class="section-heading">Experience</h2>
+
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title">Laravel Developer</span>
+                <span class="entry-company">· Kiwii IT, Dhaka</span>
+              </div>
+              <span class="entry-date">Sep 2025 – Present</span>
+            </div>
+            <ul>
+              <li>
+                Built role-based permission and token-based authentication
+                systems (Sanctum, JWT).
+              </li>
+              <li>
+                Optimized database queries from 3s to under 500ms without
+                caching.
+              </li>
+              <li>Integrated secure payment gateways (SSLCOMMERZ, Stripe).</li>
+              <li>
+                Implemented real-time notifications via Reverb, Pusher, SMS, and
+                Email.
+              </li>
+              <li>
+                Deployed queue management using Laravel Horizon; generated PDF
+                invoices and Excel/CSV exports.
+              </li>
+              <li>Implemented presigned video uploads with Cloudflare R2.</li>
+              <li>Managed VPS, CI/CD pipelines, and production deployments.</li>
+            </ul>
           </div>
-          <div class="entry-org">Consultech Solution BD</div>
-          <ul>
-            <li>Developed ERP modules with permission-based access control.</li>
-            <li>
-              Built reusable UI components supporting large datasets (100k+
-              records).
-            </li>
-            <li>
-              Designed dashboards and implemented real-time updates and PDF
-              reporting.
-            </li>
-          </ul>
-        </article>
-      </section>
 
-      <section>
-        <h2 class="section-title">Projects</h2>
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title">Software Developer</span>
+                <span class="entry-company">· Digiwinners, Dhaka</span>
+                <span class="entry-badge">Part-time</span>
+              </div>
+              <span class="entry-date">Jul 2024 – Present</span>
+            </div>
+            <ul>
+              <li>
+                Developed secure APIs and admin panels for e-commerce platforms.
+              </li>
+              <li>Optimized applications using Redis caching.</li>
+              <li>Payment System Integration: SSLCommerz, Stripe, Square.</li>
+              <li>Handled VPS setup and automated deployment pipelines.</li>
+            </ul>
+          </div>
 
-        <article class="project">
-          <h3>PingPanda — SaaS Website Monitoring Platform</h3>
-          <p class="meta">Next.js, Prisma, TanStack Query</p>
-          <ul>
-            <li>
-              Built a real-time website event tracking system to monitor uptime,
-              API health, and user events.
-            </li>
-            <li>
-              Implemented Clerk-based authentication, webhook endpoints, and a
-              Discord alert bot.
-            </li>
-          </ul>
-        </article>
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title">Junior Software Developer</span>
+                <span class="entry-company">· Consultech Solution BD</span>
+              </div>
+              <span class="entry-date">Jan 2025 – Aug 2025</span>
+            </div>
+            <ul>
+              <li>
+                Developed ERP modules with permission-based access control.
+              </li>
+              <li>
+                Built reusable UI components supporting large datasets (100k+
+                records).
+              </li>
+              <li>Designed dashboards for distributors and outlets.</li>
+              <li>Implemented real-time updates and PDF reporting.</li>
+            </ul>
+          </div>
+        </section>
 
-        <article class="project">
-          <h3>PDF Craft — AI-Powered PDF Chat SaaS</h3>
-          <p class="meta">Next.js, OpenAI, Stripe</p>
-          <ul>
-            <li>
-              Built a SaaS platform for uploading PDFs and querying content via
-              semantic search and vector embeddings.
-            </li>
-            <li>
-              Implemented subscription billing with Stripe and optimized large
-              PDF rendering.
-            </li>
-          </ul>
-        </article>
+        <!-- ══════════ EDUCATION ══════════ -->
+        <section class="resume-section">
+          <h2 class="section-heading">Education</h2>
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title"
+                  >B.Sc. in Electrical and Electronic Engineering</span
+                >
+                <span class="entry-company"
+                  >· Green University of Bangladesh</span
+                >
+              </div>
+              <span class="entry-date">GPA: 3.49 / 4.00</span>
+            </div>
+          </div>
+        </section>
 
-        <article class="project">
-          <h3>Big Data Import / Export System</h3>
-          <p class="meta">Django, Celery, Redis, PostgreSQL</p>
-          <ul>
-            <li>
-              Developed high-volume CSV import/export pipelines using Celery and
-              Redis for background processing.
-            </li>
-          </ul>
-        </article>
-      </section>
+        <!-- ══════════ PROJECTS ══════════ -->
+        <section class="resume-section">
+          <h2 class="section-heading">Selected Projects</h2>
 
-      <section>
-        <h2 class="section-title">Education & Languages</h2>
-        <p>
-          <strong>B.Sc.</strong> Electrical and Electronic Engineering — Green
-          University of Bangladesh • GPA: 3.49/4.00
-        </p>
-        <p><strong>Languages:</strong> Bangla (Native), English (Academic)</p>
-      </section>
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title"
+                  >PingPanda — SaaS Website Monitoring Platform</span
+                >
+              </div>
+              <span class="entry-date project-stack"
+                >Next.js · Prisma · TanStack Query · Discord API</span
+              >
+            </div>
+            <ul>
+              <li>
+                Built a real-time website event tracking system to monitor
+                uptime, API health, and user events.
+              </li>
+              <li>
+                Implemented Clerk-based authentication with API key generation
+                and secure request validation.
+              </li>
+              <li>
+                Designed webhook endpoints to receive and process external
+                service events.
+              </li>
+              <li>
+                Integrated Discord bot for instant alert delivery on system
+                failures and threshold breaches.
+              </li>
+              <li>
+                Used Prisma ORM and TanStack Query to ensure scalable data
+                fetching and caching.
+              </li>
+            </ul>
+          </div>
 
-      <footer class="footer">
-        <div>
-          Last updated: <time datetime="2026-03-01">March 1, 2026</time>
-        </div>
-      </footer>
-    </main>
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title"
+                  >PDF Craft — AI-Powered PDF Chat SaaS</span
+                >
+              </div>
+              <span class="entry-date project-stack"
+                >Next.js · OpenAI · Stripe · Vector DB</span
+              >
+            </div>
+            <ul>
+              <li>
+                Built a SaaS platform allowing users to upload PDFs and query
+                content via AI-powered semantic search.
+              </li>
+              <li>
+                Implemented vector embeddings and similarity search for accurate
+                document retrieval.
+              </li>
+              <li>
+                Developed secure authentication and subscription billing using
+                Stripe.
+              </li>
+              <li>
+                Optimized large PDF rendering and text extraction using
+                React-PDF and server-side processing.
+              </li>
+              <li>
+                Implemented usage limits, payment verification, and protected
+                API routes.
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <div>
+                <span class="entry-title">Big Data Import / Export System</span>
+              </div>
+              <span class="entry-date project-stack"
+                >Django · Celery · Redis · PostgreSQL</span
+              >
+            </div>
+            <ul>
+              <li>
+                Developed high-volume CSV import and export pipelines handling
+                large datasets without blocking the main app.
+              </li>
+              <li>
+                Implemented background processing using Celery and Redis for
+                long-running jobs.
+              </li>
+              <li>
+                Created custom Django management commands for automated data
+                ingestion and cleanup.
+              </li>
+              <li>
+                Built email delivery of exported reports with secure file
+                handling and job status tracking.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ══════════ LANGUAGES ══════════ -->
+        <section class="resume-section">
+          <h2 class="section-heading">Languages</h2>
+          <p class="summary-text">
+            Bangla <em>(Native)</em> &nbsp;·&nbsp; English <em>(Academic)</em>
+          </p>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
-
