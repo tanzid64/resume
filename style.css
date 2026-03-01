@@ -1,142 +1,199 @@
-/* Clean, ATS-friendly resume styles */
+/* ============================================================
+   Resume – LaTeX-matching design
+   Font: EB Garamond (matches Computer Modern feel)
+   ============================================================ */
+
 :root {
-  --text: #111827;
-  --muted: #6b7280;
-  --accent: #111827;
-  --max-width: 850px;
+  --page-width: 760px;
+  --margin-x: 52px;
+  --margin-y: 36px;
+  --text: #111;
+  --muted: #444;
+  --rule: #aaa;
+  --font-body: 11.5pt;
+  --font-small: 10.5pt;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
 body {
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial;
-  color: var(--text);
-  background: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.35;
-}
-.container {
-  max-width: var(--max-width);
-  margin: 28px auto;
-  padding: 26px 28px;
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-}
-.header h1 {
   margin: 0;
-  font-size: 24px;
-}
-.role {
-  margin: 4px 0 0 0;
-  color: var(--muted);
-  font-weight: 600;
-}
-.contact {
-  font-size: 13px;
-  text-align: right;
-}
-.contact a {
-  color: var(--accent);
-  text-decoration: none;
-}
-.contact-line {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 13px;
+  background: #e8e8e8;
+  font-family: "EB Garamond", "Garamond", "Georgia", "Times New Roman", serif;
+  font-size: var(--font-body);
+  color: var(--text);
+  line-height: 1.4;
+  -webkit-print-color-adjust: exact;
 }
 
-hr {
-  border: 0;
-  border-top: 1px solid #e6e6e6;
-  margin: 14px 0 18px;
+/* ── Page (white card) ── */
+.page {
+  max-width: var(--page-width);
+  margin: 32px auto;
+  background: #fff;
+  padding: var(--margin-y) var(--margin-x);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* ── PDF button ── */
+.pdf-btn {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 999;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s;
+}
+.pdf-btn:hover {
+  background: #333;
+}
+
+/* ── Header – centred like LaTeX \begin{center} ── */
+.resume-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.resume-header h1 {
+  margin: 0 0 4px;
+  font-size: 22pt;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.subtitle {
+  margin: 0 0 6px;
+  font-size: var(--font-body);
+  font-weight: 400;
+}
+.contact-links {
+  margin: 2px 0;
+  font-size: var(--font-small);
+}
+.contact-links a {
+  color: var(--text);
+  text-decoration: none;
+}
+.contact-links a:hover {
+  text-decoration: underline;
+}
+.sep {
+  color: var(--muted);
+}
+
+/* ── Horizontal rule under header ── */
+.header-rule {
+  border: none;
+  border-top: 0.5pt solid var(--rule);
+  margin: 10px 0 12px;
+}
+
+/* ── Section headings – \section*{\scshape ...} ── */
+section {
+  margin-top: 12px;
+}
+section:first-of-type {
+  margin-top: 0;
 }
 
 .section-title {
   font-variant: small-caps;
-  color: #111827;
-  margin: 8px 0 8px;
-  font-size: 13px;
+  font-size: 13pt;
+  font-weight: 700;
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 0.5pt solid var(--rule);
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 8px;
-}
-.skills-grid strong {
-  display: block;
+/* ── Body text ── */
+.body-text {
+  margin: 4px 0 0;
+  font-size: var(--font-body);
 }
 
-.experience,
-.project {
-  margin-top: 12px;
+/* ── Skills table – mirrors tabularx {l X} ── */
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-body);
+  margin-top: 4px;
 }
-.experience + .experience {
-  margin-top: 18px;
-} /* increased gap between experiences */
+.skills-table tr td {
+  padding: 1.5px 0;
+}
+.skill-label {
+  white-space: nowrap;
+  padding-right: 12px;
+  font-weight: 600;
+  width: 90px;
+  vertical-align: top;
+}
 
-.experience h3,
-.project h3 {
+/* ── Entry (experience / project / education) ── */
+.entry {
+  margin-top: 10px;
+}
+.entry + .entry {
+  margin-top: 14px;
+}
+
+.entry-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin: 0;
-  font-size: 15px;
 }
-.dates {
-  font-size: 12px;
-  color: var(--muted);
-  font-weight: 600;
+.entry-title {
+  font-weight: 700;
+  font-size: var(--font-body);
 }
-.company {
-  margin: 6px 0 8px;
+.entry-date {
+  font-size: var(--font-small);
   color: var(--muted);
-  font-size: 13px;
+  white-space: nowrap;
+  padding-left: 8px;
+}
+.tech-stack {
+  font-style: italic;
+  color: var(--muted);
+}
+.entry-org {
+  font-size: var(--font-small);
+  color: var(--muted);
+  margin: 2px 0 4px;
 }
 
+/* ── Bullet lists ── */
 ul {
-  margin: 0 0 8px 18px;
+  margin: 4px 0 0 18px;
   padding: 0;
 }
 li {
-  margin-bottom: 6px;
+  margin-bottom: 3px;
+  font-size: var(--font-body);
 }
 
-.section-title + p,
-.section-title + .skills-grid {
-  margin-bottom: 6px;
-}
-
-.footer {
-  margin-top: 18px;
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
-}
-
-/* Print tweaks */
+/* ── Print styles ── */
 @media print {
   body {
     background: white;
   }
-  .container {
+  .page {
     margin: 0;
-    padding: 0.5in;
+    box-shadow: none;
+    padding: 0.55in 0.7in;
+    max-width: 100%;
   }
-  .contact {
-    text-align: left;
+  .pdf-btn {
+    display: none;
   }
 }
