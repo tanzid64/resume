@@ -1,0 +1,130 @@
+% This document is compiled using pdfLaTeX
+\documentclass[11pt]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{parskip}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\setlist[itemize]{left=0pt, itemsep=2pt, topsep=4pt}
+\setlength{\parskip}{4pt}
+
+% Simple commands
+\newcommand{\ContactInfo}[3]{\small#1 \\
+	\href{#2}{#2} \\ #3}
+
+\begin{document}
+\raggedright
+
+% Header
+\begin{center}
+	{\LARGE\bfseries Md. Tanzid Haque}\\[6pt]
+	{\normalsize Software Developer}\\[6pt]
+	\vspace{2pt}
+	\href{https://tanzid.dev}{tanzid.dev} $\vert$ \href{https://github.com/tanzid64}{github.com/tanzid64} $\vert$ \href{https://linkedin.com/in/tanzid64}{linkedin.com/in/tanzid64}\\
+	Email: \href{mailto:tanzid3@gmail.com}{tanzid3@gmail.com} $\vert$ Phone: +880 17089-15045
+\end{center}
+
+\vspace{6pt}
+\hrule
+\vspace{10pt}
+
+\vspace{6pt}
+
+% Professional Summary
+\section*{\scshape Professional Summary}
+Full Stack Software Developer with over 2+ years of professional experience delivering SaaS, ERP, and e-commerce platforms using Laravel, React, and Next.js. Proven expertise in database and API optimization, secure payment integrations (Stripe, SSLCOMMERZ, Square), real-time systems, and VPS-based CI/CD deployment, with a strong focus on building scalable, production-ready applications.
+
+% Technical Skills
+\section*{\scshape Technical Skills}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+Languages: & PHP, JavaScript, TypeScript, Python \\
+Frameworks: & Laravel, React, Next.js, TanStack, Django \\
+Frontend: & Inertia.js, Tailwind CSS, Shadcn UI, Bootstrap \\
+Databases: & MySQL, MongoDB, Redis \\
+Tools: & Git, VPS, CI/CD (GitHub Actions), Postman \\
+Libraries: & TanStack Query, TanStack Table, TanStack Form, React Hook Form \\
+Familiar: & Docker, IoT
+\end{tabularx}
+
+% Experience
+\section*{\scshape Experience}
+\textbf{Laravel Developer} \hfill Sep 2025 -- Present\\
+Kiwii IT, Dhaka
+\begin{itemize}
+	\item Built role-based permission and token-based authentication systems (Sanctum, JWT).
+	\item Optimized database queries from 3s to under 500ms without caching.
+	\item Integrated secure payment gateways (SSLCOMMERZ, Stripe).
+	\item Implemented real-time notifications (Reverb, Pusher, SMS, Email).
+	\item Deployed queue management using Laravel Horizon.
+	\item Generated PDF invoices, reports, and Excel/CSV exports.
+	\item Implemented presigned video uploads with Cloudflare R2.
+	\item Managed VPS, CI/CD pipelines, and production deployments.
+\end{itemize}
+\vspace{8pt}
+
+\textbf{Software Developer (Part-time)} \hfill Jul 2024 -- Present\\
+Digiwinners, Dhaka
+\begin{itemize}
+	\item Developed secure APIs and admin panels for e-commerce platforms.
+	\item Optimized applications using Redis caching.
+	\item Payment System Integration: SSLCommerz, Stripe, Square.
+	\item Handled VPS setup and automated deployment pipelines.
+\end{itemize}
+\vspace{8pt}
+
+\textbf{Junior Software Developer} \hfill Jan 2025 -- Aug 2025\\
+Consultech Solution BD
+\begin{itemize}
+	\item Developed ERP modules with permission-based access control.
+	\item Built reusable UI components supporting large datasets (100k+ records).
+	\item Designed dashboards for distributors and outlets.
+	\item Implemented real-time updates and PDF reporting.
+\end{itemize}
+\vspace{10pt}
+
+% Education
+\section*{\scshape Education}
+\textbf{B.Sc. in Electrical and Electronic Engineering} \\Green University of Bangladesh \hfill GPA: 3.49/4.00
+
+% Languages
+\section*{\scshape Languages}
+Bangla (Native), English (Academic)
+
+% Projects
+\section*{\scshape Selected Projects}
+\textbf{PingPanda — SaaS Website Monitoring Platform} \hfill Next.js, Prisma, TanStack Query\\
+\begin{itemize}[left=0pt]
+	\item Built a real-time website event tracking system to monitor uptime, API health, and user events.
+	\item Implemented Clerk-based authentication with API key generation and secure request validation.
+	\item Designed webhook endpoints to receive and process external service events.
+	\item Integrated Discord bot for instant alert delivery on system failures and threshold breaches.
+	\item Used Prisma ORM and TanStack Query to ensure scalable data fetching and caching.
+\end{itemize}
+\vspace{8pt}
+
+\textbf{PDF Craft — AI-Powered PDF Chat SaaS} \hfill Next.js, OpenAI, Stripe\\
+\begin{itemize}
+	\item Built a SaaS platform allowing users to upload PDFs and query content using AI-powered semantic search.
+	\item Implemented vector embeddings and similarity search for accurate document retrieval.
+	\item Developed secure authentication and subscription billing using Stripe.
+	\item Optimized large PDF rendering and text extraction using React-PDF and server-side processing.
+	\item Implemented usage limits, payment verification, and protected API routes.
+\end{itemize}
+\vspace{8pt}
+
+\textbf{Big Data Import / Export System} \hfill Django, Celery, Redis, PostgreSQL\\
+\begin{itemize}
+	\item Developed high-volume CSV import and export pipelines handling large datasets without blocking the main application.
+	\item Implemented background processing using Celery and Redis for long-running jobs.
+	\item Created custom Django management commands for automated data ingestion and cleanup.
+	\item Built email delivery of exported reports with secure file handling and job status tracking.
+\end{itemize}
+
+\vfill
+\begin{center}
+	Last updated: \today
+\end{center}
+
+\end{document}
